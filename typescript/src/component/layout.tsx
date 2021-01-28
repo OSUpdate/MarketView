@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import styles from "../App.css";
+import * as styles from "../App.css";
+
 class Layout extends Component {
     render() {
         return (
-            <section className={styles.wrap}>
+            <section className={styles['App-header']}>
+                test
             </section>
         );
     }
