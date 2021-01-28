@@ -9,7 +9,7 @@ const notFound = React.lazy(()=> import("./pages/NotFound"))
 const app = React.lazy(()=>import("./App"))
 const store = configure();
 
-const Root :React.FC<{}> = () => {
+function Root(){
     return(
         <Provider store = {store}>
             <BrowserRouter>

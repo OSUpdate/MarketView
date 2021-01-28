@@ -5,6 +5,13 @@ declare namespace AppCssNamespace {
     "App-link": string;
     "App-logo": string;
     "App-logo-spin": string;
+    menu: string;
+    "menu-head": string;
+    "menu-list": string;
+    menu_item: string;
+    opener: string;
+    "side-bar": string;
+    "side-bar-inner": string;
     wrap: string;
   }
 }

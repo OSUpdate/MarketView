@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import Layout from '../component/layout';
+import SideBar from '../component/dashboard/SideBar';
+import Layout from '../component/Layout';
 
 class HomeContainer extends Component {
     render() {
         return (
-            <Layout/>
+            <Layout >
+                <SideBar title="DashBoard"/>
+            </Layout>
         );
     }
 }

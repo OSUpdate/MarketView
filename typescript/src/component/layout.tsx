@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import * as styles from "../App.css";
-
-class Layout extends Component {
-    render() {
-        return (
-            <section className={styles['App-header']}>
-                test
+export interface LayoutProps {
+    children :React.ReactNode
+}
+const Layout = (props : LayoutProps) => {
+    console.log(props)
+    return (
+            <section className={styles.wrap}>
+                {props.children}
             </section>
         );
-    }
-}
+};
 
 export default Layout;

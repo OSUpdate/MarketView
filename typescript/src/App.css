@@ -21,6 +21,67 @@
   background-color: red;
 
 }
+.side-bar{
+  background-color: #ffffff;
+  color:var(--gray-color-color);
+  width: 260px;
+  top:0;
+  bottom: 0;
+  position: fixed;
+}
+.side-bar-inner{
+  position: relative;
+  height: 100%;
+  padding:0.66667em 0 1.3333em 0;
+}
+.menu{
+  text-align: left;
+  width: 100%;
+}
+.menu > header > a{
+  color:#333;
+}
+.menu ul a, .menu ul span{
+  border-bottom: 0;
+  color: inherit;
+  cursor: pointer;
+  padding: 0.625em 0;
+}
+.menu ul{
+  padding: 0;
+  user-select: none;
+  list-style: none;
+}
+.menu ul li{
+  padding: 0.5em 0 0.5em 0;
+}
+.menu > ul > li > .opener::before{
+  display: inline-block;
+  position: absolute;
+  font-weight: 900;
+  right: 2.2em;
+}
+.menu_item{
+  position: relative;
+  display: block;
+}
+.menu-list > li{
+  padding:0 !important;
+  margin-top: 5px;
+}
+.menu-list > li > a, .menu-list > li > span > a, .menu-head{
+  padding-left: 24px;
+}
+.menu-list > li > a{
+  color:var(--gray-color);
+  padding-top:15px;
+  padding-bottom: 15px;
+}
+.menu-list > li > a:hover{
+  color:var(--gray-focus-color) !important;
+  background-color: var(--info-background-color);
+  
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
