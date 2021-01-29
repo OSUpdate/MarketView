@@ -6,9 +6,9 @@ export interface LayoutProps {
 const Layout = (props : LayoutProps) => {
     console.log(props)
     return (
-            <section className={styles.wrap}>
+            <div className={styles.App}>
                 {props.children}
-            </section>
+            </div>
         );
 };
 
