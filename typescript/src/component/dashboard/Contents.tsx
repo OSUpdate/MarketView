@@ -10,8 +10,7 @@ const Contents = (props:ContentsProps) =>{
         <section className={styles.contents}>
           <div className={styles.container}>
             <Switch>
-              <Route exact component={Market}/>
-              <Route />
+              <Route exact path="/" component={Market}/>
             </Switch>
           </div>
         </section>

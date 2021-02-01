@@ -61,6 +61,7 @@ declare namespace AppCssNamespace {
     "col-xs-9": string;
     container: string;
     "container-fluid": string;
+    "container-full": string;
     "content-title": string;
     contents: string;
     "dl-horizontal": string;
@@ -86,6 +87,7 @@ declare namespace AppCssNamespace {
     row: string;
     "side-bar": string;
     "side-bar-inner": string;
+    sign: string;
     wrap: string;
   }
 }

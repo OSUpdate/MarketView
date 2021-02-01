@@ -211,7 +211,55 @@ a{
   width: 250px;
   text-align: center;
 }
+.container-full{
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+  flex-direction: column!important;
+  width: 100%!important;
+  height: 100%!important;
+  top:0!important;
+  bottom: 0!important;
+  right: 0!important;
+  left:0!important;
+  z-index: 10300!important;
+  text-align: center!important;
+  position: absolute!important;
+  display: flex!important;
+  align-items: center!important;
+  justify-content: center!important;
 
+}
+.sign{
+  width: 100%;
+  max-width: 400px;
+}
+.sign input[type="submit"] {
+  /* button style */
+  border: none;
+  background: var(--main-button-color);
+  border-radius: .25em;
+  padding: 16px 20px;
+  color: #ffffff;
+  font-weight: bold;
+  width:100%;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+.sign input[type="submit"]:hover {
+  background: var(--main-button-focus-color);
+}
+.sign input[type="submit"]:focus {
+  outline: none;
+}
+.sign p{
+  font-size: 0.8em;
+  color:var(--dark-color);
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
