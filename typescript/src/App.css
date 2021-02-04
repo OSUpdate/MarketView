@@ -20,7 +20,84 @@ body, html{
 }
 a{
   text-decoration: none;
+  color:var(--gray-color);
 }
+a:hover{
+  color:var(--gray-focus-color);
+}
+input[type="text"], input[type="password"], input[type="email"], input[type="tel"], input[type="search"], input[type="url"], select {
+  height: 2.75em;
+}
+input[type="text"], input[type="password"], input[type="email"], input[type="tel"], input[type="search"], input[type="url"], select, textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  background: #ffffff;
+  border-radius: 0.375em;
+  border: none;
+  border: solid 1px rgba(210, 215, 217, 0.75);
+  color: inherit;
+  display: block;
+  outline: 0;
+  padding: 0 0 0 1em;
+  text-decoration: none;
+  width: 100%;
+}
+
+input[type="text"]:focus, select:focus, textarea:focus{
+  border: solid 1px var(--main-button-color);
+}
+.item input[type="text"],
+.item input[type="email"],
+.item input[type="password"],
+.item textarea,
+.item select,
+.item legend {
+    color:#222 !important;
+    display: block;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+.item{
+    margin-top:28px;
+    margin-bottom: 28px;
+}
+.item a{
+  text-decoration: none;
+  outline: 0;
+  cursor: pointer;
+}
+.item input[type="text"],
+.item input[type="email"],
+.item input[type="password"],
+.item textarea,
+.item select {
+/* general style for input elements */
+
+height: 55px;
+box-sizing: border-box;
+padding: 12px;
+border: 1px solid #cfd9db;
+background-color: #ffffff;
+border-radius: .25em;
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+.item input[type="email"],
+.item select{
+  width:45%;
+  display: inline-block;
+}
+.item h3{
+  display: inline-block;
+  font-weight: normal;
+  width:10%;
+}
+
 .App {
   text-align: center;
   margin: 0 auto;
@@ -46,6 +123,7 @@ a{
 
 }
 .side-bar{
+  transition: all .5s ease-in-out;;
   background-color: #ffffff;
   color:var(--gray-color-color);
   width: 260px;
@@ -110,6 +188,7 @@ a{
   
 }
 .contents{
+  transition: all .5s ease-in-out;;
   min-height:100vh;
   margin-left: 260px;
   padding: 20px 30px;
@@ -174,28 +253,35 @@ a{
   padding:20px 20px 0 20px;
 }
 .list{
-  box-sizing: border-box;
-  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.5em;
   padding:0;
   margin:0;
+  width: 100%;
   list-style-type: none;
 }
-.list-item{
-  box-sizing: border-box;
-  line-height: 30px;
-  
-  border-bottom: 1px solid rgba(120,130,140,.13);
+.list li{
+  float: right;
+  flex:10%;
+  padding: 5px 10px;
+  text-align: right;
 }
-.list-item a{
-  display: inline-block;
-  line-height: 1.7;
-  color:#333;
+.list li:first-child{
+  float: left;
+  flex:15%;
+  text-align: left;
 }
-.list li:first-child {
+.panel .list:first-child {
   border-bottom: 2px solid var(--bg-color);
-  padding-left: 2rem;
-  padding-top:1rem;
-  padding-bottom: 1rem;
+  padding-top:1em;
+  padding-bottom: 1em;
+
+}
+.panel .list {
+  border-bottom: 1px solid var(--bg-color);
+  padding-top:0.3em;
+  padding-bottom: 0.3em;
 
 }
 
@@ -232,10 +318,15 @@ a{
   width: 100%;
   max-width: 400px;
 }
+.sign a{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  line-height: 2.5em;
+}
 .sign input[type="submit"] {
   /* button style */
   border: none;
-  background: var(--main-button-color);
+  background: var(--button-color);
   border-radius: .25em;
   padding: 16px 20px;
   color: #ffffff;
@@ -251,7 +342,7 @@ a{
   appearance: none;
 }
 .sign input[type="submit"]:hover {
-  background: var(--main-button-focus-color);
+  background: var(--button-focus-color);
 }
 .sign input[type="submit"]:focus {
   outline: none;
@@ -266,5 +357,47 @@ a{
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media (min-width: 992px){
+  .col-md-3 {
+    width: 25%;
+}
+.col-md-4 {
+  width: 33.33333333% !important;
+}
+  .col-md-6 {
+    width: 50%;
+}
+.col-md-8 {
+  width: 66.66666667%;
+}
+.col-md-11 {
+  width: 91.66666667%;
+}
+.col-md-10 {
+  width: 83.33333333%;
+}
+.col-md-9 {
+  width: 75%;
+}
+  .col-md-12 {
+    width: 100%;
+}
+
+  .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+      float: left !important;
+  }
+}
+@media (max-width: 992px){
+
+  .side-bar{
+    margin-left:-26em;
+    position: fixed;
+    left:0;
+  }
+
+  .contents{
+    margin-left: 0;
   }
 }

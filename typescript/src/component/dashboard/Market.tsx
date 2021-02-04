@@ -31,9 +31,28 @@ const Market = (props:MarketProps) =>{
                         <div className={styles['board-card']}>
                             <div className={styles.panel}>
                                 <ul className={styles.list}>
-                                    <li className={styles['list-item']}><a>test</a><span>현재가</span><span>test2</span><span>test3</span></li>
-                                    <li className={styles['list-item']}><a>test</a><span>현재가</span><span>test2</span><span>test3</span></li>
-                                    <li className={styles['list-item']}><a>test</a><span>현재가</span><span>test2</span><span>test3</span></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                </ul>
+                                <ul className={styles.list}>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                </ul>
+                                <ul className={styles.list}>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
+                                    <li className={styles['list-item']}><a>test</a></li>
                                 </ul>
                             </div>
                         </div>

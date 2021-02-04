@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import * as styles from "../App.css";
-
-const Input = () => {
+interface InputProps{
+    title:string
+}
+const Input = (props:InputProps) => {
     return (
-            <div>
-            </div>
+        <div className={styles.item}>
+            <input type="text"  placeholder={props.title}/>
+        </div>
         );
 };
 

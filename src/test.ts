@@ -1,5 +1,4 @@
 import * as api from './lib/api';
-import dfd from "danfojs-node";
 import _ from "lodash";
 import key from "./key.json";
 import data from "./data.json";
@@ -8,7 +7,7 @@ import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import qs from "querystring";
 import fs from 'fs';
-import request from 'request';
+
 interface Trade{
     trade: object[]
 }
@@ -50,6 +49,7 @@ const handleError = (error:any) =>{
     if(error.response){
         console.log(error.response.data);
         console.log(error.response.status);
+        console.log(error.response.headers);
     }else if(error.request){
         console.log(error.request);
     }else{
@@ -166,10 +166,9 @@ const chance = async (ticker:string) => {
         };
         
         const res = await api.chance(ticker,options);
-        console.log(res.data);
         return res.data;
     }catch(error){
-        throw new Error(error);
+        handleError(error);
     }
 };
 
@@ -177,12 +176,14 @@ const buy = async(ticker:string) =>{
     try{
         const data = await chance(ticker);
         const current = await api.ticker(ticker);
-        const volume = (parseInt(data.bid_account.balance)/current.data[0].trade_price).toFixed(8)
+        let volume = (parseInt(data.bid_account.balance)-data.maker_bid_fee*current.data[0].trade_price)/current.data[0].trade_price;
+        volume.toFixed(8);
+        volume -= parseFloat(data.maker_bid_fee);
         const body = {
             market: ticker,
             // bid: 매수, ask: 매도
             side: 'bid',
-            volume: volume,
+            volume: volume.toFixed(8),
             price: current.data[0].trade_price,
             // limit: 지정가 매수,매도 , price: 시장가 매수, market: 시장가 매도
             ord_type: 'limit',
@@ -201,12 +202,13 @@ const buy = async(ticker:string) =>{
         }
         
         const token = jwt.sign(payload, key.secret)
-        /*
+        
         const options = {
             headers: {Authorization: `Bearer ${token}`},
+            
             json: body
         }
-        */
+        /*
         const options = {
             method: "POST",
             url: "https://api.upbit.com/v1/orders",
@@ -219,10 +221,10 @@ const buy = async(ticker:string) =>{
             console.log(body)
         })
         */
-        const res = await api.order(options);
+        const res = await api.orders(body,options);
         return res.data;
     }catch(error){
-        throw new Error(error);
+        handleError(error);
     }
 };
 
@@ -230,11 +232,12 @@ const sell = async (ticker:string) =>{
     try{
         const data = await chance(ticker);
         const current = await api.ticker(ticker);
+        const volume = data.ask_account.balance - parseFloat(data.maker_ask_fee);
         const body = {
             market: ticker,
             // bid: 매수, ask: 매도
             side: 'ask',
-            volume: data.ask_account.balance,
+            volume: volume,
             price: current.data.trade_price,
             // limit: 지정가 매수,매도 , price: 시장가 매수, market: 시장가 매도
             ord_type: 'limit',
@@ -253,12 +256,12 @@ const sell = async (ticker:string) =>{
         }
         
         const token = jwt.sign(payload, key.secret)
-        /*
+        
         const options = {
             headers: {Authorization: `Bearer ${token}`},
             json: body
         }
-        */
+        /*
         const options = {
             method: "POST",
             url: "https://api.upbit.com/v1/orders",
@@ -271,10 +274,10 @@ const sell = async (ticker:string) =>{
             console.log(body)
         })
         */
-        const res = await api.order(options);
+        const res = await api.orders(body,options);
         return res.data;
     }catch(error){
-        throw new Error(error);
+        handleError(error);
     }
     
 };
@@ -295,7 +298,6 @@ const autoTrading = async (ticker:string) =>{
             now = new Date();
             //console.log(mid.getTime() < now.getTime() && now.getTime() < mid.getTime()+ 20000)
             if(mid.getTime() < now.getTime() && now.getTime() < mid.getTime()+ 20000){
-                console.log('test')
                 target = await getTargetprice(ticker);
                 mid = new Date(now.getFullYear(),now.getMonth(),now.getDate()+1);
                 ma = await getSma(ticker);
@@ -336,13 +338,14 @@ const autoTrading = async (ticker:string) =>{
                 
             }
 
-        },400);
+        },500);
     }
     catch(error){
         handleError(error);
     }
 };
-autoTrading("KRW-LINK")
+//autoTrading("KRW-LINK")
+buy("KRW-LINK");
 //chance('KRW-BTC');
 // 이평선 값
 //console.log(sma([1,2,3,4,5,6,7,8,9,10,11,12]))

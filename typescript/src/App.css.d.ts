@@ -67,8 +67,8 @@ declare namespace AppCssNamespace {
     "dl-horizontal": string;
     "form-group": string;
     "form-horizontal": string;
+    item: string;
     list: string;
-    "list-item": string;
     menu: string;
     "menu-head": string;
     "menu-item": string;
